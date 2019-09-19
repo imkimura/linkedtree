@@ -2,9 +2,15 @@ listwords = []
 dicteres = dict()
 lword = list(str(input("Digite uma série de caracteres: ")))
 
-for w in lword:
+for l in lword:
     if len(listwords) > 0:
-        print("oi")
-    else:
-        listwords.append(dicteres["word"] = w)
+        notexist = True
+        for w in range(0, len(listwords)):                        
+            if l == listwords[w]["word"]:
+                notexist = False
+                listwords[w]["freq"] += 1            
+        if notexist:
+            listwords.append(({"word":l,"freq":1}))                
+    else:        
+        listwords.append(({"word":l,"freq":1}))
 print(listwords)
