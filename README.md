@@ -12,7 +12,7 @@ Esta é uma tentativa de fazer uma Arvore Huffman com Python
 ### Conclusões
 
 - [X] Organização Realizada
-- [ ] Iplementar a Arvore Huffman
+- [ ] Implementar a Arvore Huffman
 
 ### Arvore de Huffman
 
