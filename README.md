@@ -16,4 +16,4 @@ Esta é uma tentativa de fazer uma Arvore Huffman com Python
 
 ### Arvore de Huffman
 
-![](https://desnecessario.files.wordpress.com/2008/09/iracha.gif = 150x300)
+![](https://desnecessario.files.wordpress.com/2008/09/iracha.gif)
