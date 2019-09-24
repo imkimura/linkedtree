@@ -11,7 +11,9 @@ for l in range(0, len(listOrganized)):
         else:
             if (listOrganized[l]["chave"] > listOrganized[lowposition]["chave"]) and (listOrganized[l]["chave"] < listOrganized[secondMP]["chave"]):
                 secondMP = l
+
 print(lowposition, " ", secondMP)
+
 if sameposition:
     freq = listOrganized[lowposition]["chave"] + listOrganized[sameposition]["chave"]
     del listOrganized[sameposition]

@@ -1,5 +1,5 @@
 class Node:
     def __init__(self, data):
-        self.ant = None
+        self.left = None
         self.data = data
-        self.prox = None
+        self.right = None
