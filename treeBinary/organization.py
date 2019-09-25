@@ -9,11 +9,11 @@ class Organization:
             if len(listwords) > 0:
                 notexist = True
                 for w in range(0, len(listwords)):                        
-                    if l == listwords[w]["right"]:
+                    if l == listwords[w]["left"]:
                         notexist = False
                         listwords[w]["chave"] += 1            
                 if notexist:
-                    listwords.append(({"left": None,"chave":1, "right":l}))                
+                    listwords.append(({"chave":1, "left": l, "right":None}))                
             else:        
-                listwords.append(({"left": None,"chave":1, "right":l}))
+                listwords.append(({"chave":1, "left": l, "right":None}))
         return listwords       

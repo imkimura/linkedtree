@@ -1,4 +1,4 @@
-listOrganized = [{'left': None, 'chave': 1, 'right': '1'}, {'left': None, 'chave': 3, 'right': '4'}, {'left': None, 'chave': 2, 'right': '2'}, {'left': None, 'chave': 4, 'right': '5'}]
+listOrganized = [{'right': None, 'left': 'a', 'chave': 1}, {'right': None, 'left': 'b', 'chave': 1}, {'right': None, 'left': 'c', 'chave': 1}, {'right': None, 'left': 'd', 'chave': 3}, {'right': None, 'left': 'e', 'chave': 6}, {'right': None, 'left': 'f', 'chave': 6}, {'right': None, 'left': 'j', 'chave': 12}, {'right': None, 'left': 'z', 'chave': 30}]
 sameposition = None
 lowposition = 0
 secondMP = (len(listOrganized) - 1)
