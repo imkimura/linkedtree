@@ -2,6 +2,7 @@ import json
 import pprint
 from node import Node
 from organization import Organization
+
 """
  Detalhes:
     Aqui importamos a classe Nó para popularmos nossa Árvore.
@@ -43,23 +44,30 @@ def compressTree(lower, higher, listOrd):
 def buildingTree(listOrganized):
     sameposition = None
     lowposition = 0
-    secondMP = (len(listOrganized) - 1)
-
+    chaveSame = 10000000000000000000
+    secondMP = len(listOrganized) - 1
+    second = 100000000000000000
     for l in range(0, len(listOrganized)):
         if listOrganized[lowposition]["chave"] > listOrganized[l]["chave"]:
             lowposition = l    
         else:
-            if (listOrganized[lowposition]["chave"] == listOrganized[l]["chave"]) and (listOrganized[lowposition]["left"] != listOrganized[l]["left"]):
-                sameposition = l        
-            else:
-                if (listOrganized[l]["chave"] > listOrganized[lowposition]["chave"]) and (listOrganized[l]["chave"] < listOrganized[secondMP]["chave"]) and (listOrganized[l]["chave"] != listOrganized[secondMP]["chave"]):
-                    secondMP = l
-    print(lowposition, " ", sameposition)
-    if sameposition is not None:
+            if (listOrganized[lowposition]["chave"] == listOrganized[l]["chave"]) and (listOrganized[lowposition]["left"] != listOrganized[l]["left"]) and (listOrganized[l]["chave"] != chaveSame):
+                sameposition = l 
+                chaveSame = listOrganized[lowposition]["chave"]                  
+    for l in range(0, len(listOrganized)):        
+        if (listOrganized[l]["chave"] > listOrganized[lowposition]["chave"]) and (listOrganized[l]["chave"] < second) and (listOrganized[l]["chave"] != second):
+            secondMP = l
+            second = listOrganized[l]["chave"]
+    print(lowposition, " ", sameposition, " ", secondMP)
+    if sameposition is not None:        
         listOrd = compressTree(lowposition, sameposition, listOrganized)
         del listOrd[sameposition]
         del listOrd[lowposition]  
     else:
+        if lowposition > secondMP:
+            aux = secondMP
+            secondMP = lowposition
+            lowposition = aux
         listOrd = compressTree(lowposition, secondMP, listOrganized)
         del listOrd[secondMP]
         del listOrd[lowposition]
@@ -72,8 +80,8 @@ class TreeHuffman:
         listOrd = buildingTree(listOrd)
         print(listOrd)    
 
-    # jsonOrd = json.dumps(listOrd)
-    # pprint.pprint(jsonOrd)
+    jsonOrd = json.dumps(listOrd)
+    pprint.pprint(jsonOrd)
 
 if __name__ == "__main__":
     TreeHuffman()
