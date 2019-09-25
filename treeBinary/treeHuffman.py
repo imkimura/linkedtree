@@ -81,7 +81,7 @@ class TreeHuffman:
         print(listOrd)    
 
     jsonOrd = json.dumps(listOrd)
-    pprint.pprint(jsonOrd)
+    print(jsonOrd)
 
 if __name__ == "__main__":
     TreeHuffman()
