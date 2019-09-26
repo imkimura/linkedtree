@@ -73,6 +73,20 @@ def buildingTree(listOrganized):
         del listOrd[lowposition]
     return listOrd
 
+def addClassTree(listOrd):
+    
+    if "left" in listOrd["left"]:
+        addClassTree(listOrd["left"])
+    else:
+        #Aqui ele tem que add o valor no Nó
+        print(listOrd["left"])
+    if "left" in listOrd["right"]:
+        addClassTree(listOrd["right"])
+    else:
+        #Aqui ele tem que add o valor no Nó
+        print(listOrd["right"])
+
+
 class TreeHuffman:    
     listOrd = Organization.setlistwords(list(str(input("Digite uma série de caracteres: "))))  
 
@@ -80,8 +94,10 @@ class TreeHuffman:
         listOrd = buildingTree(listOrd)
         print(listOrd)    
 
-    jsonOrd = json.dumps(listOrd)
-    print(jsonOrd)
+    addClassTree(listOrd[0])
+
+    # jsonOrd = json.dumps(listOrd)
+    # print(jsonOrd)
 
 if __name__ == "__main__":
     TreeHuffman()
