@@ -73,28 +73,54 @@ def buildingTree(listOrganized):
         del listOrd[lowposition]
     return listOrd
 
-def addClassTree(listOrd):
+def huffmanCod(listOrd ,listPilha, huffmanList, valoresHuffman):
     
-    if "left" in listOrd["left"]:
-        addClassTree(listOrd["left"])
-    else:
-        #Aqui ele tem que add o valor no Nó
-        print(listOrd["left"])
-    if "left" in listOrd["right"]:
-        addClassTree(listOrd["right"])
-    else:
-        #Aqui ele tem que add o valor no Nó
-        print(listOrd["right"])
+    valoresHuffman = []
 
+    if "left" in listOrd["left"]:
+        listPilha.append('0')
+        huffmanCod(listOrd["left"], listPilha, huffmanList, valoresHuffman)
+        listPilha.pop()
+    else:
+        listPilha.append('0')
+        valoresHuffman.append(listOrd["left"])
+        valoresHuffman.append((",".join(listPilha)))
+        huffmanList.append(valoresHuffman)
+        #print(listOrd["left"])
+        listPilha.pop()
+    
+    valoresHuffman = []
+
+    if "left" in listOrd["right"]:
+        listPilha.append('1')
+        huffmanCod(listOrd["right"], listPilha, huffmanList, valoresHuffman)
+        listPilha.pop()
+    else:
+        listPilha.append('1')
+        valoresHuffman.append(listOrd["right"])
+        valoresHuffman.append((",".join(listPilha)))
+        huffmanList.append(valoresHuffman)
+        #print(listOrd["right"])
+        #print(listPilha)
+        listPilha.pop()
+
+    return huffmanList
+#nao esquece
 
 class TreeHuffman:    
     listOrd = Organization.setlistwords(list(str(input("Digite uma série de caracteres: "))))  
 
     while len(listOrd) != 1:    
         listOrd = buildingTree(listOrd)
-        print(listOrd)    
+        # print(listOrd)    
 
-    addClassTree(listOrd[0])
+    listPilha = []
+    huffmanList = []
+    valoresHuffman = []
+    huffmanList = huffmanCod(listOrd[0], listPilha, huffmanList, valoresHuffman)
+    print(huffmanList)
+
+
 
     # jsonOrd = json.dumps(listOrd)
     # print(jsonOrd)
