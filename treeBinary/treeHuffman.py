@@ -49,16 +49,16 @@ def buildingTree(listOrganized):
     second = 100000000000000000
     for l in range(0, len(listOrganized)):
         if listOrganized[lowposition]["chave"] > listOrganized[l]["chave"]:
-            lowposition = l    
-        else:
-            if (listOrganized[lowposition]["chave"] == listOrganized[l]["chave"]) and (listOrganized[lowposition]["left"] != listOrganized[l]["left"]) and (listOrganized[l]["chave"] != chaveSame):
-                sameposition = l 
-                chaveSame = listOrganized[lowposition]["chave"]                  
+            lowposition = l         
+
     for l in range(0, len(listOrganized)):        
         if (listOrganized[l]["chave"] > listOrganized[lowposition]["chave"]) and (listOrganized[l]["chave"] < second) and (listOrganized[l]["chave"] != second):
             secondMP = l
             second = listOrganized[l]["chave"]
-    print(lowposition, " ", sameposition, " ", secondMP)
+        if (listOrganized[lowposition]["chave"] == listOrganized[l]["chave"]) and (listOrganized[lowposition]["left"] != listOrganized[l]["left"]) and (listOrganized[l]["chave"] != chaveSame):
+                sameposition = l 
+                chaveSame = listOrganized[lowposition]["chave"]
+    
     if sameposition is not None:        
         listOrd = compressTree(lowposition, sameposition, listOrganized)
         del listOrd[sameposition]
@@ -84,7 +84,7 @@ def huffmanCod(listOrd ,listPilha, huffmanList, valoresHuffman):
     else:
         listPilha.append('0')
         valoresHuffman.append(listOrd["left"])
-        valoresHuffman.append((",".join(listPilha)))
+        valoresHuffman.append(("-".join(listPilha)))
         huffmanList.append(valoresHuffman)
         #print(listOrd["left"])
         listPilha.pop()
@@ -98,7 +98,7 @@ def huffmanCod(listOrd ,listPilha, huffmanList, valoresHuffman):
     else:
         listPilha.append('1')
         valoresHuffman.append(listOrd["right"])
-        valoresHuffman.append((",".join(listPilha)))
+        valoresHuffman.append(("-".join(listPilha)))
         huffmanList.append(valoresHuffman)
         #print(listOrd["right"])
         #print(listPilha)
@@ -108,22 +108,18 @@ def huffmanCod(listOrd ,listPilha, huffmanList, valoresHuffman):
 #nao esquece
 
 class TreeHuffman:    
-    listOrd = Organization.setlistwords(list(str(input("Digite uma série de caracteres: "))))  
-
+    listOrd = Organization.setlistwords(list(str(input("Digite uma série de caracteres: "))))      
     while len(listOrd) != 1:    
-        listOrd = buildingTree(listOrd)
-        # print(listOrd)    
+        listOrd = buildingTree(listOrd)            
 
     listPilha = []
     huffmanList = []
     valoresHuffman = []
     huffmanList = huffmanCod(listOrd[0], listPilha, huffmanList, valoresHuffman)
     print(huffmanList)
-
-
-
-    # jsonOrd = json.dumps(listOrd)
-    # print(jsonOrd)
+    
+    jsonOrd = json.dumps(listOrd)
+    print(jsonOrd)
 
 if __name__ == "__main__":
     TreeHuffman()
