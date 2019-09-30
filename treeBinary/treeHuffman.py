@@ -1,5 +1,6 @@
 import json
 import pprint
+import csv
 from node import Node
 from organization import Organization
 
@@ -105,7 +106,15 @@ def huffmanCod(listOrd ,listPilha, huffmanList, valoresHuffman):
         listPilha.pop()
 
     return huffmanList
-#nao esquece
+
+def csvHuffman(listHuff):
+    listaOrdenada = open('huffmanCod.csv', 'w')
+    aux = str("Letra" +  " ; " + "Código" + " ; " + "\n")
+    listaOrdenada.write(aux)
+    for l in listHuff:
+        listaOrdenada.write(str(l[0] + " ; " + l[1] + " ; " + "\n"))
+    
+    listaOrdenada.close()
 
 class TreeHuffman:    
     listOrd = Organization.setlistwords(list(str(input("Digite uma série de caracteres: "))))      
@@ -117,9 +126,9 @@ class TreeHuffman:
     valoresHuffman = []
     huffmanList = huffmanCod(listOrd[0], listPilha, huffmanList, valoresHuffman)
     print(huffmanList)
-    
+    csvHuffman(huffmanList)
     jsonOrd = json.dumps(listOrd)
-    print(jsonOrd)
+    print("\n\n", jsonOrd)
 
 if __name__ == "__main__":
     TreeHuffman()
