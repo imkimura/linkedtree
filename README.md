@@ -1,19 +1,23 @@
-# linkedtree
+# Árvore de Huffman
 
-Esta é uma tentativa de fazer uma Arvore Huffman com Python 
+Este é um repositório destinado a criar uma Arvore de Huffman, a arvore feita foi criada com `dict`
 
-### Requisitos 
+## 1. Requisitos 
 
-> python <= 3.5
+```python
+python <= 3.5
 
+$ pip install csv
+$ pip install json
+```
 > https://www.python.org/
-
-
-### Conclusões
+## 2. Conclusões
 
 - [X] Organização Realizada
 - [X] Implementar a Árvore Huffman
-- [ ] Implementar Classe a Árvore
+- [x] Codificação a Partir da Árvore
+- [x] CSV com Codificação
+- [ ] Apresentar Árvore de Forma Gráfica
 
 ### Arvore de Huffman
 
